@@ -1,0 +1,5 @@
+name: custom notification
+type: module
+description: Custom notification system
+package: Custom
+core: 8.x
