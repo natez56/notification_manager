@@ -27,7 +27,6 @@ class NotificationForm extends ConfigFormBase
      */
     protected function getEditableConfigNames()
     {
-        // magic. it's all magic
         return [
             static::SETTINGS,
         ];
@@ -74,7 +73,12 @@ class NotificationForm extends ConfigFormBase
      */
     public function validateForm(array &$form, FormStateInterface $form_state)
     {
-        // TODO validate start date is not before end date.
+        // Check that end time is after start time.
+        if ($form_state->getValue('start_time') >=
+            $form_state->getValue('end_time')) {
+            $form_state->setErrorByName('end_time', $this->t('End time must be
+            set after start time.'));
+        }
     }
 
     /**

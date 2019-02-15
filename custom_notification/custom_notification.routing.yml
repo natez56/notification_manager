@@ -13,3 +13,19 @@ custom_notification.manager:
     _title: 'Notifications Manager'
   requirements:
     _permission: 'administer site configuration'
+
+custom_notification.publish:
+  path: '/node/{node}/publish'
+  defaults:
+    _controller: '\Drupal\custom_notification\Controller\PublishNodeController::content'
+    _title: 'Publish Node'
+  requirements:
+    _permission: 'administer site configuration'
+
+custom_notification.unpublish:
+  path: '/node/{node}/unpublish'
+  defaults:
+    _controller: '\Drupal\custom_notification\Controller\UnpublishNodeController::content'
+    _title: 'Unpublish Node'
+  requirements:
+    _permission: 'administer site configuration'
