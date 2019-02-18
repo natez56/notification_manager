@@ -178,9 +178,11 @@ class NotificationsManager extends FormBase
             case 2:
                 // Set published for all nodes selected using checkboxes.
                 foreach ($selectedNodeIds as $nid) {
-                    $node = \Drupal\node\Entity\Node::load($nid);
-                    $node->setPublished(true);
-                    $node->save();
+                    if ($nid) {
+                        $node = \Drupal\node\Entity\Node::load($nid);
+                        $node->setPublished(true);
+                        $node->save();
+                    }
                 }
                 break;
 
@@ -188,17 +190,22 @@ class NotificationsManager extends FormBase
                 // Set unpublished for all notifications selected using
                 // checkboxes.
                 foreach ($selectedNodeIds as $nid) {
-                    $node = \Drupal\node\Entity\Node::load($nid);
-                    $node->setPublished(false);
-                    $node->save();
+                    if ($nid) {
+                        $node = \Drupal\node\Entity\Node::load($nid);
+                        $node->setPublished(false);
+                        $node->save();
+                    }
                 }
                 break;
 
             case 4:
                 // Delete notifications selected using checkboxes.
                 foreach ($selectedNodeIds as $nid) {
-                    $entity = \Drupal::entityTypeManager()->getStorage('node')->load($nid);
-                    $entity->delete();
+                    if ($nid) {
+                        $entity = \Drupal::entityTypeManager()
+                            ->getStorage('node')->load($nid);
+                        $entity->delete();
+                    }
                 }
                 break;
 

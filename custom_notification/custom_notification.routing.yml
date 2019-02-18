@@ -7,7 +7,7 @@ custom_notification.form:
     _permission: 'administer site configuration'
 
 custom_notification.manager:
-  path: '/notifications'
+  path: '/notification-manager'
   defaults:
     _form: '\Drupal\custom_notification\Form\NotificationsManager'
     _title: 'Notifications Manager'
